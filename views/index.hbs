@@ -1,1 +1,32 @@
-<h2>this is index page</h2>
+<div class="container mt-5">
+  {{!-- search bar --}}
+  <div class="row"></div>
+  {{!-- movie list --}}
+  {{!-- <div class="row">
+    {{#each movieData}}
+    <div class="col-sm-3">
+      <a href="/movies/{{this.id}}">
+        <div class="card bg-dark text-white">
+          <img src="{{movieImgAPI}}{{this.image}}" class="card-img" alt="This movie image">
+          <div class="card-img-overlay">
+            <h4 class="card-title">{{this.title}}</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div> --}}
+  {{!-- movie list(EASY) --}}
+  <div class="row">
+    <div class="col-sm-3">
+      <a href="/movies/1">
+        <div class="card bg-dark text-white">
+          <img src="{{movieImgAPI}}c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg" class="card-img" alt="This movie image">
+          <div class="card-img-overlay">
+            <h4 class="card-title">This is Title</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

@@ -16,8 +16,23 @@
     </div>
     {{/each}}
   </div> --}}
-  {{!-- movie list(EASY) --}}
+  {{!-- movie list(JSON) --}}
   <div class="row">
+    {{#each movieData}}
+    <div class="col-sm-3">
+      <a href="/movies/{{this.id}}">
+        <div class="card mb-2">
+          <img src="https://movie-list.alphacamp.io/posters/{{this.image}}" class="card-img" alt="This movie image">
+          <div class="card-body movie-item-body">
+            <h6 class="card-title">{{this.title}}</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+  {{!-- movie list(EASY) --}}
+  {{!-- <div class="row">
     <div class="col-sm-3">
       <a href="/movies/1">
         <div class="card bg-dark text-white">
@@ -29,4 +44,4 @@
       </a>
     </div>
   </div>
-</div>
+</div> --}}

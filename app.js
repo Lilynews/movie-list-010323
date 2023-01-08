@@ -1,3 +1,4 @@
+//////// load 3-rd-party-tools, variable
 const projectName = 'movie-list-010323'
 const express = require('express')
 const app = express()
@@ -8,19 +9,20 @@ require('mongoose')
 const moviesDB = require('./models/movieSchema')
 const movieImgAPI = 'https://movie-list.alphacamp.io/posters/'
 
-// // load JSON file
-// const moviesJson = require('./models/seeds/movies.json')
+//////// load JSON file
+const moviesJson = require('./models/seeds/movies.json').results
 
-// setting express-handlebars
+//////// setting express-handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 
 
-// "use" in express
+//////// "use" in express
 app.use(express.static('public'))
 
-
+//////// Router
+// index-router
 // app.get('/', (req, res) => {
 //   moviesDB.find()
 //     .lean()
@@ -30,21 +32,46 @@ app.use(express.static('public'))
 //     .catch(error => console.log('get router error'))
 // })
 
-// EASY-router
+// index-router(JSON)
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Movie List', movieImgAPI })
+  res.render('index', { title: 'Movie List', movieData: moviesJson, movieImgAPI })
+  console.log(movieImgAPI)
+})
 
-  console.log(moviesDB
-    .find()
+// index-router(EASY)
+// app.get('/', (req, res) => {
+//   res.render('index', { title: 'Movie List', movieImgAPI })
+
+//   console.log(moviesDB
+//     .find()
+//     .lean()
+//     .then(
+//       movieData => movieData.title
+//       // Promise { <pending> }?
+//       ))
+// })
+
+// detail-dynamic-router(JSON)
+app.get('/movies/:movie_id', (req, res) => {
+  const movie = moviesJson.find(movie => {
+    return movie.id.toString() === req.params.movie_id
+  })
+  res.render('detail', { movie })
+})
+// detail-dynamic-router(DB)
+app.get('/movies/:movie_id', (req, res) => {
+  const id = req.params.movie_id
+  return moviesDB.findById(id)
     .lean()
-    .then(
-      movieData => movieData.title
-      // Promise { <pending> }?
-      ))
+    .then ( movie => {
+      return res.render('detail', { movie })
+    })
+    .catch(error => console.log('dynamic router error'))
 })
 
 
 
+//////// Listener
 app.listen(port, () => {
   console.log(`${projectName} app is running on ${host}`)
 })

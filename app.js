@@ -58,16 +58,16 @@ app.get('/movies/:movie_id', (req, res) => {
   })
   res.render('detail', { movie })
 })
-// detail-dynamic-router(DB)
-app.get('/movies/:movie_id', (req, res) => {
-  const id = req.params.movie_id
-  return moviesDB.findById(id)
-    .lean()
-    .then ( movie => {
-      return res.render('detail', { movie })
-    })
-    .catch(error => console.log('dynamic router error'))
-})
+// // detail-dynamic-router(DB)
+// app.get('/movies/:movie_id', (req, res) => {
+//   const id = req.params.movie_id
+//   return moviesDB.findById(id)
+//     .lean()
+//     .then ( movie => {
+//       return res.render('detail', { movie })
+//     })
+//     .catch(error => console.log('dynamic router error'))
+// })
 
 
 

@@ -22,7 +22,7 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 //////// Router
-// index-router
+// index-router (DB)
 // app.get('/', (req, res) => {
 //   moviesDB.find()
 //     .lean()
@@ -58,7 +58,7 @@ app.get('/movies/:movie_id', (req, res) => {
   })
   res.render('detail', { movie })
 })
-// // detail-dynamic-router(DB)
+// detail-dynamic-router(DB)
 // app.get('/movies/:movie_id', (req, res) => {
 //   const id = req.params.movie_id
 //   return moviesDB.findById(id)
@@ -69,6 +69,7 @@ app.get('/movies/:movie_id', (req, res) => {
 //     .catch(error => console.log('dynamic router error'))
 // })
 
+//SearchBar (JSON)
 
 
 //////// Listener

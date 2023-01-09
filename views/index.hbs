@@ -1,24 +1,38 @@
 <div class="container mt-5">
   {{!-- search bar --}}
-  <div class="row"></div>
-  {{!-- movie list --}}
-  {{!-- <div class="row">
-    {{#each movieData}}
-    <div class="col-sm-3">
-      <a href="/movies/{{this.id}}">
-        <div class="card bg-dark text-white">
-          <img src="{{movieImgAPI}}{{this.image}}" class="card-img" alt="This movie image">
-          <div class="card-img-overlay">
-            <h4 class="card-title">{{this.title}}</h4>
+  <div class="row mb-3">
+    <form action="">
+      <h2 class="text-secondary">搜尋電影</h2>
+      <div class="row align-items-end">
+        <div class="col-9">
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入電影名稱" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button" />
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </a>
-    </div>
-    {{/each}}
-  </div> --}}
-  {{!-- movie list(JSON) --}}
+        <div class="col-3 d-flex justify-content-end mt-3">
+          <div>
+            <select class="form-select" aria-label="select sort" role="button" name="sort"
+              onchange="this.form.submit()">
+              <option {{selected sortSelected.default}} value="default">顯示全部</option>
+              <option {{selected sortSelected.AtoZ}} value="AtoZ">A → Z</option>
+              <option {{selected sortSelected.ZtoA}} value="ZtoA">Z → A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{!-- movie list --}}
   <div class="row">
-    {{#each movieData}}
+    {{#if movies}}
+    {{#each movies}}
     <div class="col-sm-3">
       <a href="/movies/{{this.id}}">
         <div class="card mb-4">
@@ -30,18 +44,13 @@
       </a>
     </div>
     {{/each}}
-  </div>
-  {{!-- movie list(EASY) --}}
-  {{!-- <div class="row">
-    <div class="col-sm-3">
-      <a href="/movies/1">
-        <div class="card bg-dark text-white">
-          <img src="{{movieImgAPI}}c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg" class="card-img" alt="This movie image">
-          <div class="card-img-overlay">
-            <h4 class="card-title">This is Title</h4>
-          </div>
-        </div>
-      </a>
+    {{else}}
+    <div class="video welcome-video-from-Jimmy-2-2-A14 mb-5">
+      <video autoplay muted>
+        <source src="https://giant.gfycat.com/SelfreliantCharmingDevilfish.mp4" type='video/mp4'>
+        <source src="https://thumbs.gfycat.com/SelfreliantCharmingDevilfish-mobile.mp4" type="video/mp4">
+      </video>
     </div>
+    {{/if}}
   </div>
-</div> --}}
+</div>

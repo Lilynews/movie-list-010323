@@ -1,6 +1,6 @@
 const movieSchema = require('../movieSchema')
-// const movieSeeder = require('./movies.json').results
-const movieSeeder = require('./moviesData.json').results
+const movieSeeder = require('./movies.json').results
+// const movieSeeder = require('./moviesData.json').results
 const db = require('../../config/mongoose')
 
 //setting db status when load seeder 

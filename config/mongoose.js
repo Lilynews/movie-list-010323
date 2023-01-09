@@ -9,6 +9,9 @@ if(process.env.NODE_ENV !== 'production') {
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+// mongoose debug
+mongoose.set('debug', true);
+
 
 // DB connected status
 const db = mongoose.connection

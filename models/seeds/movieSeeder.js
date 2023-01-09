@@ -5,6 +5,6 @@ const db = require('../../config/mongoose')
 
 //setting db status when load seeder 
 db.once('open', ()=> {
-  movieSchema.create(movieSeeder)
+  movieSchema.insertMany(movieSeeder)
   console.log('DB Seeder finished!')
 })
